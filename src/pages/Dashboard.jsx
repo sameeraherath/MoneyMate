@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const mockSummary = {
   balance: 5240.75,
@@ -27,6 +27,12 @@ const mockTransactions = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const navigateToNew = () =>
+    navigate("/transactions/new", { state: { background: location } });
+
   const [summary, setSummary] = useState(null);
   const [transactions, setTransactions] = useState([]);
 
@@ -43,12 +49,12 @@ export default function Dashboard() {
       <header className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-semibold">Dashboard</h1>
         <div className="space-x-2">
-          <Link
-            to="/transactions/new"
+          <button
+            onClick={() => navigateToNew()}
             className="bg-blue-500 text-white px-4 py-2 rounded-2xl"
           >
             Add Transaction
-          </Link>
+          </button>
         </div>
       </header>
 
