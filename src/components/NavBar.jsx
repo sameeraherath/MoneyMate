@@ -28,7 +28,7 @@ const NavBar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button className="p-2 hover:bg-blue-700 rounded">
+            <button className="p-2 hover:bg-blue-400 rounded">
               <svg
                 className="w-6 h-6"
                 fill="none"
